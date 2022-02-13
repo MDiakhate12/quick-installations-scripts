@@ -2,7 +2,10 @@
 
 ## Apache Spark Standalone
 
+Since there are export commands, execute with `source your_script.sh` instead of `./your_script.sh`
+
 ### Master
+
 ```bash
 wget https://dlcdn.apache.org/spark/spark-3.2.1/spark-3.2.1-bin-hadoop3.2.tgz
 ls
