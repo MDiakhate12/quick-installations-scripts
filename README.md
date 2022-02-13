@@ -1,5 +1,39 @@
 # quick-installations-scripts
 
+## Apache Spark Standalone
+
+### Master
+```bash
+wget https://dlcdn.apache.org/spark/spark-3.2.1/spark-3.2.1-bin-hadoop3.2.tgz
+ls
+tar -xzvf spark-3.2.1-bin-hadoop3.2.tgz 
+export SPARK_HOME=$PWD/spark-3.2.1-bin-hadoop3.2
+echo $SPARK_HOME 
+export PATH=$PATH:$SPARK_HOME/bin
+export PATH=$PATH:$SPARK_HOME/sbin
+sudo apt update -y
+sudo apt install -y openjdk-11-jdk
+export JAVA_HOME=/usr/lib/jvm/java-11-openjdk-amd64
+start-master.sh
+export MASTER_URL=$(grep "INFO Master: Starting Spark master at " $SPARK_HOME/logs/* | awk '{print $9}')
+echo $MASTER_URL
+```
+
+### Worker 
+```bash
+wget https://dlcdn.apache.org/spark/spark-3.2.1/spark-3.2.1-bin-hadoop3.2.tgz
+ls
+tar -xzvf spark-3.2.1-bin-hadoop3.2.tgz 
+export SPARK_HOME=$PWD/spark-3.2.1-bin-hadoop3.2
+echo $SPARK_HOME 
+export PATH=$PATH:$SPARK_HOME/bin
+export PATH=$PATH:$SPARK_HOME/sbin
+sudo apt update -y
+sudo apt install -y openjdk-11-jdk
+export JAVA_HOME=/usr/lib/jvm/java-11-openjdk-amd64
+start-worker.sh $MASTER_URL
+```
+
 ## Docker
 
 ### Ubuntu
