@@ -37,8 +37,8 @@ export JAVA_HOME=/usr/lib/jvm/java-11-openjdk-amd64
 start-worker.sh $MASTER_URL
 ```
 
-> Note: On Windows, Spark can complain about not knowing where HADOOP_HOME is. To solve this, download the [winutils repo]() as [explained here](https://cwiki.apache.org/confluence/display/HADOOP2/WindowsProblems) and set the HADOOP_HOME as system environment variable (be careful to not add 'bin' at the end of the path. This should be the parent folder of the bin directory). Finally, reload the IDE.
-> Note: Sometimes, you will need to add a spark maven package to your code at runtime for testing purposes. It's possible by simply adding to your SparkSession definition this: `.config("spark.jars.packages", "groupId:artefactId:version")` (you can specify multiple package separated by commas (,)). After that, refer to your package documentation for usage. Example with spark-excel package on pyspark:
+> Note: On Windows, Spark can complain about not knowing where HADOOP_HOME is. To solve this, download the [winutils repo]() as [explained here](https://cwiki.apache.org/confluence/display/HADOOP2/WindowsProblems) and set the HADOOP_HOME as system environment variable (be careful to not add 'bin' at the end of the path. This should be the parent folder of the bin directory). Finally, reload the IDE. <br>
+> Note: Sometimes, you will need to add a spark maven package to your code at runtime for testing purposes. It's possible by simply adding to your SparkSession definition this: `.config("spark.jars.packages", "groupId:artefactId:version")` (you can specify multiple package separated by commas (,)). After that, refer to your package documentation for usage. Example with spark-excel package on pyspark:<br>
 
 ```python
 from pyspark.sql import SparkSession
