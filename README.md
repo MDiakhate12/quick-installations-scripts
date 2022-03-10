@@ -55,7 +55,7 @@ spark = (
 df = spark.read \
     .format("com.crealytics.spark.excel") \
     .option("header", "true") \
-    .load("C:\\Users\\mdiakhat\\Downloads\\MarkUp_2022.xlsx")
+    .load("/path/to/your/excel/file.xlsx")
  ```
 
 ## Docker
