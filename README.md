@@ -38,7 +38,7 @@ start-worker.sh $MASTER_URL
 ```
 
 > Note: On Windows, Spark can complain about not knowing where HADOOP_HOME is. To solve this, download the [winutils repo]() as [explained here](https://cwiki.apache.org/confluence/display/HADOOP2/WindowsProblems) and set the HADOOP_HOME as system environment variable (be careful to not add 'bin' at the end of the path. This should be the parent folder of the bin directory). Finally, reload the IDE. <br><br>
-> Note: Sometimes, you will need to add a spark maven package to your code at runtime for testing purposes. It's possible by simply adding to your SparkSession definition this: `.config("spark.jars.packages", "groupId:artefactId:version")` (you can specify multiple package separated by commas (,)). After that, refer to your package documentation for usage. Example with spark-excel package on pyspark:<br>
+> Note: Sometimes, you will need to add a spark maven package to your code at runtime for testing purposes. It's possible by simply adding to your SparkSession definition this: `.config("spark.jars.packages", "groupId:artefactId:version")` (you can specify multiple package separated by commas (,)). After that, refer to your package documentation for usage.<br>Example with spark-excel package on pyspark:<br>
 
 ```python
 from pyspark.sql import SparkSession
@@ -52,8 +52,11 @@ spark = (
     .getOrCreate()
 )
 
-df = spark.read.format("com.crealytics.spark.excel").load("/path/to/your/excel/file.xlsx")
-```
+df = spark.read \
+    .format("com.crealytics.spark.excel") \
+    .option("header", "true") \
+    .load("C:\\Users\\mdiakhat\\Downloads\\MarkUp_2022.xlsx")
+ ```
 
 ## Docker
 
