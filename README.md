@@ -111,8 +111,8 @@ sudo ln -s /usr/local/bin/docker-compose /usr/bin/docker-compose
 
 # Mouse Jiggler 
 
-> MouseJiggler Powershell Script
-> Written by AndrewDavis
+> MouseJiggler Powershell Script <br>
+> Written by AndrewDavis <br>
 > https://gist.github.com/AndrewDavis
 
 ```bash
