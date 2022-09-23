@@ -108,3 +108,24 @@ sudo curl -L "https://github.com/docker/compose/releases/download/1.29.2/docker-
 sudo chmod +x /usr/local/bin/docker-compose
 sudo ln -s /usr/local/bin/docker-compose /usr/bin/docker-compose
 ```
+
+# Mouse Jiggler 
+
+> MouseJiggler Powershell Script
+> Written by AndrewDavis
+> https://gist.github.com/AndrewDavis
+
+```bash
+Clear-Host
+Echo "Keep-alive with Scroll Lock..."
+
+$WShell = New-Object -com "Wscript.Shell"
+
+while ($true)
+{
+  $WShell.sendkeys("{SCROLLLOCK}")
+  Start-Sleep -Milliseconds 100
+  $WShell.sendkeys("{SCROLLLOCK}")
+  Start-Sleep -Seconds 240
+}
+```
