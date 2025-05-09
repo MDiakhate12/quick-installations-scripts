@@ -129,3 +129,39 @@ while ($true)
   Start-Sleep -Seconds 240
 }
 ```
+
+# Run loop
+```python
+import time
+import ctypes
+
+import stats
+
+def press_key():
+    RUN_KEY = 0x10
+    ctypes.windll.user32.keybd_event(RUN_KEY, 0, 0, 0)
+    time.sleep(0.05)
+    ctypes.windll.user32.keybd_event(RUN_KEY, 0, 2, 0)
+
+
+def test_run_with_interval(interval=60*10):
+    print(f"Run stats check every {interval} seconds...")
+    try:
+        while True:
+            press_key()
+            print(f"\nChecking docker stats every {interval} seconds, ")
+            # Afficher les statistiques
+            docker_stats = stats.get_docker_memory_stats()
+            for stat in docker_stats:
+                print(f"Conteneur: {stat['container']}, Utilisation mémoire: {stat['memory_usage']} / {stat['memory_limit']}, "
+                    f"Pourcentage: {stat['memory_percent']}%")
+
+            time.sleep(interval)
+    except KeyboardInterrupt:
+        print("\nStopping...")
+
+if __name__ == "__main__":
+    # os.system("docker stats spark-iceberg2")
+
+    test_run_with_interval(interval=60)
+```
